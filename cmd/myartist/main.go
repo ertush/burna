@@ -28,11 +28,26 @@ artist := burnaboy.CreateArtist(
  
  artists = append(artists, artist)
 
- manager := &burnaboy.ArtistManager{UserKYCinfo:burnaboy.UserKYCinfo{"John Doe", "34", "019-322-443", map[string]string{"location": "Abuja", "street": "joka 03", "ZipCode":"883"}}, Manages:artists,}
+ manager := &burnaboy.ArtistManager{
+	UserKYCinfo:burnaboy.UserKYCinfo{
+		"John Doe", 
+		"34", 
+		"019-322-443", 
+		map[string]string{"location": "Abuja", "street": "joka 03", "ZipCode":"883"}}, 
+		Manages:artists,}
+ 
+ director := &burnaboy.ArtistDirector{
+		UserKYCinfo:burnaboy.UserKYCinfo{
+		"Monte Carol", 
+		"44", 
+		"019-399-743", 
+		map[string]string{"location": "Ugenya", "street": "mypopy 03", "ZipCode":"435"}},
+		Boss:manager,}
+
 
  fmt.Println(artist.GetArtistManager(artist, manager))
 
- fmt.Println(artist.GetArtistDirector(artist))
+ fmt.Println(director.GetArtistDirector(artist.UserKYCinfo.Name))
 
  //fmt.Printf("%s has won the following awards %v\n", artist.GetArtistBio()["Name"], artist.GetArtistAwards())
 }
